@@ -1,0 +1,120 @@
+@import '../../styles/shared';
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.05;
+  }
+
+  &__body {
+    position: relative;
+    max-width: 900px;
+    background-color: #f9f9f9;
+    color: #3f526b;
+    border-radius: 10px;
+    box-shadow: 0 0 68px 3px rgba(128, 128, 128, 0.42);
+    font-family: sans-serif;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header header   header"
+      "aside  main     main"
+      "aside  .        footer";
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: header;
+
+    &__title {
+      font-size: 1.5em;
+      font-weight: bold;
+      padding: 0.5em;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #fff;
+    grid-area: footer;
+
+    .modal__button {
+      margin: 1em 1em 1em 0;
+      width: 7.5em;
+      height: 3em;
+    }
+  }
+
+  &__main {
+    background-color: #fff;
+    padding: 1em;
+    grid-area: main;
+  }
+
+  &__aside {
+    grid-area: aside;
+  }
+
+  &__button {
+    width: 5em;
+    height: 2em;
+    background-position: center;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    &--close {
+      width: 3.3em;
+      height: 3.3em;
+      background-image: urlicon(close);
+
+      &:focus {
+        background-image: urlicon(close, focus);
+      }
+    }
+
+    &--cancel {
+      background-image: urlicon(cancelbutton);
+
+      &:focus {
+        background-image: urlicon(cancelbutton, focus);
+      }
+
+      &:hover {
+        background-image: urlicon(cancelbutton, hover);
+      }
+    }
+
+    &--save {
+      background-image: urlicon(savebutton);
+
+      &:focus {
+        background-image: urlicon(savebutton, focus);
+      }
+
+      &:hover {
+        background-image: urlicon(savebutton, hover);
+      }
+    }
+  }
+}
