@@ -1,0 +1,33 @@
+$board-grid-gap: 1em;
+$board__panel-height: 400px;
+$board__panel-width: 500px;
+
+$icons: (
+  addwidget: 'addwidget - icon.svg',
+  arrowdown: 'Arrowdown - icon',
+  cancelbutton: 'cancelbutton - web',
+  close: 'close - icon',
+  dropdownarrowdown: 'dropdown arrow down - icon.svg',
+  dropdownarrowup: 'dropdown arrow up - icon.svg',
+  mywidget: 'Mywidget - icon',
+  removewidget: 'Removewidget - icon.svg',
+  savebutton: 'savebutton - web',
+  settings: 'Settings - icon',
+  widgetdirectory: 'Widgetdirectory - icon'
+);
+
+$mods: (
+  default: 'default',
+  focus: 'selected',
+  hover: 'hover'
+);
+
+@function urlicon($icon, $mod: 'default') {
+  $iconPath: '../../assets/' + map_get($icons, $icon);
+
+  @if str_index($iconPath, '.svg') != str_length($iconPath) - 3 {
+    $iconPath: $iconPath + ' - ' + map_get($mods, $mod) + '.svg';
+  }
+
+  @return url($iconPath);
+}
