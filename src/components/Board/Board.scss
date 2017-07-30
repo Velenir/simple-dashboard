@@ -1,0 +1,12 @@
+@import '../../styles/shared';
+
+.dashboard__board {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, $board__panel-width);
+  grid-template-rows: repeat(auto-fit, $board__panel-height);
+  grid-gap: $board-grid-gap;
+  padding: $board-grid-gap;
+  font-family: sans-serif;
+}
