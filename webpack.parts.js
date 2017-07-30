@@ -10,6 +10,7 @@ exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     historyApiFallback: true,
     stats: 'errors-only',
+    overlay: false,
     host, // Defaults to `localhost`
     port, // Defaults to 8080
     // Don't refresh if hot loading fails. Good while
