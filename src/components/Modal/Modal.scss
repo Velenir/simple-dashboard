@@ -22,7 +22,7 @@
 
   &__body {
     position: relative;
-    max-width: 900px;
+    max-width: 100%;
     background-color: #f9f9f9;
     color: #3f526b;
     border-radius: 10px;
@@ -55,9 +55,10 @@
     justify-content: flex-end;
     background-color: #fff;
     grid-area: footer;
+    padding: 1rem;
 
     .modal__button {
-      margin: 1em 1em 1em 0;
+      margin: 1em 0 1em 1em;
       width: 7.5em;
       height: 3em;
     }
@@ -65,7 +66,7 @@
 
   &__main {
     background-color: #fff;
-    padding: 1em;
+    padding: 1rem;
     grid-area: main;
   }
 
