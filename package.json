@@ -14,8 +14,7 @@
     "lint:css": "stylelint 'src/**/*.?(s)css'",
     "lint:js": "eslint src/ webpack.*.js --ext .js,.jsx --cache",
     "stats": "webpack --env production --profile --json > stats.json",
-    "deploy": "gh-pages -d build",
-    "cm": "git-cz"
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -30,11 +29,9 @@
     "babel-preset-react": "^6.24.1",
     "babili-webpack-plugin": "^0.1.2",
     "clean-webpack-plugin": "^0.1.16",
-    "commitizen": "^2.9.6",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "cssnano": "^3.10.0",
-    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-airbnb-base": "^11.3.1",
