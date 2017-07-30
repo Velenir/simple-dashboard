@@ -50,6 +50,7 @@
     'jsx-quotes': [2, 'prefer-single'],
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],
     'react/prefer-stateless-function': 0,
+    'jsx-a11y/no-noninteractive-tabindex': 0,
     'spaced-comment': [2, 'always', { markers: ['?'] }],
     'arrow-parens': 0,
     'brace-style': [2, '1tbs', { 'allowSingleLine': true }],

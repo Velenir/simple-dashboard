@@ -36,7 +36,12 @@ const commonConfig = merge([
       new webpack.optimize.ModuleConcatenationPlugin()
     ]
   },
-  parts.lintJavaScript({ include: PATHS.src }),
+  parts.lintJavaScript({
+    include: PATHS.src,
+    options: {
+      emitWarning: true
+    }
+  }),
   parts.lintCSS({ include: PATHS.src }),
   parts.loadFonts({
     options: {
