@@ -6,7 +6,9 @@
     "selector-list-comma-newline-after": null,
     "color-hex-case": null,
     "function-comma-space-after": null,
-    "no-eol-whitespace": [true, {ignore: ["empty-lines"]}]
+    "no-eol-whitespace": [true, {"ignore": ["empty-lines"]}],
+    "at-rule-no-unknown": [true, {"ignoreAtRules": ["function", "return", "if", "else", "for", "each", "mixin", "while", "include", "extend", "at-root"]}],
+    "declaration-block-no-redundant-longhand-properties": null
   },
   "ignoreFiles": "./build/**/*"
 }
