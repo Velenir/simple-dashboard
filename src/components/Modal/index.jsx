@@ -3,7 +3,7 @@ import './Modal.scss';
 
 class Modal extends Component {
   render() {
-    const { title, closeButton, children, aside } = this.props;
+    const { title, closeButton, children, aside, main } = this.props;
 
     return (
       <div className='modal'>
@@ -17,6 +17,7 @@ class Modal extends Component {
             {typeof aside === 'function' ? aside() : aside}
           </div>
           <div className='modal__main'>
+            {typeof main === 'function' ? main() : main}
             {typeof children === 'function' ? children() : children}
           </div>
           <div className='modal__footer'>
