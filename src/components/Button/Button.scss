@@ -1,6 +1,5 @@
 .button {
   min-height: 3em;
-  appearance: none;
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -9,9 +8,15 @@
   align-items: center;
   -webkit-appearance: none;
   cursor: pointer;
+  white-space: nowrap;
 
   &--add-widget {
     color: #fff;
     background-color: #657fac;
+  }
+
+  &--remove-widget {
+    color: #fff;
+    background-color: red;
   }
 }
