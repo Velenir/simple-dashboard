@@ -1,0 +1,21 @@
+.dashboard__header {
+  display: flex;
+  padding: 1em;
+}
+
+.header__controls {
+  margin-left: auto;
+}
+
+.header {
+  .__controls {
+    margin-left: auto;
+  }
+
+  &__title {
+    color: #2d425c;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: .5em;
+  }
+}
