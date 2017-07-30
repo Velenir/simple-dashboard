@@ -1,0 +1,17 @@
+.button {
+  min-height: 3em;
+  appearance: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  -webkit-appearance: none;
+  cursor: pointer;
+
+  &--add-widget {
+    color: #fff;
+    background-color: #657fac;
+  }
+}
