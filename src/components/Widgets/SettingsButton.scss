@@ -1,0 +1,15 @@
+@import '../../styles/shared';
+
+.settings-button {
+  background-image: urlicon(settings);
+  width: 3em;
+  height: 3em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  outline: none;
+
+  &:focus {
+    background-image: urlicon(settings, focus);
+  }
+}

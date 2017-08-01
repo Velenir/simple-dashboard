@@ -1,0 +1,21 @@
+.progress {
+  &__bar {
+    &--total {
+      margin-right: 1em;
+      background-color: #d8dde6;
+      width: 70%;
+      height: 1em;
+      position: relative;
+    }
+
+    &--filled {
+      height: 100%;
+      position: absolute;
+      background-color: #36c398;
+    }
+  }
+
+  &__value {
+    font-weight: bold;
+  }
+}

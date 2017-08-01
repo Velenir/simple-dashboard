@@ -11,7 +11,7 @@ export default class App extends PureComponent {
     return (
       <div>
         <Modal title='Modal Title' aside={AddWidgetAside} main={AddWidgetMain} open={false} />
-        <Modal title='Modal Title' main={EditWidgetMain} mode='widget' />
+        <Modal title='Modal Title' main={EditWidgetMain} mode='widget' open={false} />
         <Dashboard />
       </div>
     );
