@@ -1,0 +1,31 @@
+.label-wrapper {
+  display: flex;
+  margin: 5px 0;
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--row {
+    align-items: center;
+    margin-right: 1em;
+    font-size: 1.2em;
+  }
+
+  &__label {
+    font-weight: bold;
+    color: #b0b7c3;
+    font-size: 0.7em;
+
+    .label-wrapper--row & {
+      color: #444;
+      font-weight: normal;
+      order: 1;
+      margin-left: 0.5em;
+    }
+  }
+
+  &__content {
+    display: flex;
+  }
+}
