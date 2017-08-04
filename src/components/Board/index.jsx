@@ -1,20 +1,16 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import Panel from '../Panel';
-import { UsersActivity } from '../Widgets';
 import './Board.scss';
 
-class Board extends PureComponent {
-  getPanels = () => Array.from({ length: 6 }, (_, i) => (
-    i === 0 ? <Panel key={i}><UsersActivity /></Panel> : <Panel key={i} />
-  ));
+const Board = ({ panels }) => (
+  <div className='dashboard__board board'>
+    {panels.map((id, i) => <Panel id={id} key={id == null ? `placeholder-${i}` : id} />)}
+  </div>
+);
 
-  render() {
-    return (
-      <div className='dashboard__board board'>
-        {this.getPanels()}
-      </div>
-    );
-  }
-}
+const mapStateToProps = ({ panels }) => ({
+  panels
+});
 
-export default Board;
+export default connect(mapStateToProps, null)(Board);

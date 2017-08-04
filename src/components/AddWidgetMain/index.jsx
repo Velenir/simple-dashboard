@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import WidgetPreview from '../WidgetPreview';
 import usersActivityWidgetPicture from '../../assets/users activity widget picture.png';
+import { removeWidget, addWidget } from '../../store/actions';
 
-const widgets = {
+import './AddWidgetMain.scss';
+
+const childWidgets = {
   1: {
     id: 1,
     title: 'User Activity',
@@ -28,13 +32,32 @@ const widgets = {
   }
 };
 
-const AddWidgetMain = () => (
-  <div>
-    {Object.keys(widgets).map(key => {
-      const widget = widgets[key];
-      return <WidgetPreview {...widget} key={widget.id} />;
-    })}
+const AddWidgetMain = ({ active, widgets, removeWidget, addWidget, filter }) => (
+  <div className='add-widget__main'>
+    {(filter ? widgets.filter(
+      id => id == null ? null : childWidgets[id].title.toLowerCase().includes(filter))
+      : widgets).map(id => {
+      if (id == null) return null;
+
+      const widget = childWidgets[id];
+      return (
+        <WidgetPreview
+          {...widget}
+          key={widget.id}
+          active={active}
+          remove={removeWidget}
+          add={addWidget}
+        />
+      );
+    })
+    }
   </div>
 );
 
-export default AddWidgetMain;
+const mapStateToProps = ({ adding }) => ({
+  active: adding.active,
+  widgets: adding[adding.active],
+  filter: adding.filter && adding.filter.toLowerCase()
+});
+
+export default connect(mapStateToProps, { removeWidget, addWidget })(AddWidgetMain);

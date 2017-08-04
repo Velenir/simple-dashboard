@@ -1,6 +1,6 @@
 .activity-list {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: minmax(315px, auto) 1fr;
   grid-gap: .5em .7em;
   padding: .7em;
   font-size: 1.7em;
@@ -21,5 +21,4 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }

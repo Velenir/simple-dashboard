@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Header from '../Header';
 import ActivityList from './ActivityList';
 import Selector from '../InputWidgets/Selector';
 import SettingsButton from './SettingsButton';
+import Loader from './Loader';
+import { changeActivityPeriod, getUserActivity } from '../../store/actions';
 import './UsersActivity.scss';
 
 const activityOptions = [
@@ -20,17 +23,50 @@ const activityOptions = [
   }
 ];
 
-const UsersActivity = () => (
-  <div className='widget user-activity'>
-    <Header title='User Activity' className='widget__header'>
-      <Selector options={activityOptions} defaultValue='weekly' className='widget__header__selector' />
-      <SettingsButton />
-    </Header>
-    <div className='widget__body'>
-      <ActivityList {...data} />
-    </div>
-  </div>
-);
+const WIDGET_ID = 1;
+
+// const UsersActivity = ({ activityPeriod }) => (
+//   <div className='widget user-activity'>
+//     <Header title='User Activity' className='widget__header'>
+//       <Selector options={activityOptions} value={activityPeriod} className='widget__header__selector' onChange={} />
+//       <SettingsButton />
+//     </Header>
+//     <div className='widget__body'>
+//       <ActivityList {...data} />
+//     </div>
+//   </div>
+// );
+
+class UsersActivity extends Component {
+  onChange = (e) => {
+    const { id = WIDGET_ID, changeActivityPeriod } = this.props;
+    changeActivityPeriod(id, e.target.value);
+  }
+  render() {
+    const { activityPeriod, id, loaded, error, getUserActivity } = this.props;
+    return (
+      <div className='widget user-activity'>
+        <Header title='User Activity' className='widget__header'>
+          <Selector options={activityOptions} value={activityPeriod} className='widget__header__selector' onChange={this.onChange} />
+          <SettingsButton id={id} />
+        </Header>
+        <div className='widget__body'>
+          <Loader
+            component={ActivityList}
+            load={getUserActivity}
+            loaded={loaded}
+            error={error}
+            id={id}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+UsersActivity.defaultProps = {
+  activityPeriod: 'weekly'
+};
 
 const data = {
   company: 123,
@@ -105,4 +141,10 @@ const data = {
   }
 };
 
-export default UsersActivity;
+const mapStateToProps = ({ widgets, asyncData: { activity } }) => ({
+  activityPeriod: widgets[WIDGET_ID].activityPeriod,
+  loaded: !!activity.data,
+  error: activity.error
+});
+
+export default connect(mapStateToProps, { changeActivityPeriod, getUserActivity })(UsersActivity);

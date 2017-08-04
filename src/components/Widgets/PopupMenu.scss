@@ -18,6 +18,11 @@
     width: 280px;
     cursor: pointer;
 
+    &--disabled {
+      background-color: #ead2d2;
+      color: #fff;
+    }
+
     &:hover {
       background-color: #657fac;
       color: #fff;
