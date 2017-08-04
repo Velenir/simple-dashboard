@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const NameAllModulesPlugin = require('name-all-modules-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const parts = require('./webpack.parts');
 
@@ -76,7 +77,10 @@ const productionConfig = merge([
         }
         return chunk.modules.map(m => path.relative(m.context, m.request)).join('_');
       }),
-      new NameAllModulesPlugin()
+      new NameAllModulesPlugin(),
+      new CopyWebpackPlugin([{
+        from: path.join(__dirname, 'data.json')
+      }])
     ],
     recordsPath: path.join(__dirname, 'records.json')
   },
