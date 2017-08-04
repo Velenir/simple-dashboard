@@ -44,3 +44,9 @@ export const avatars = [
 export const DnDtypes = {
   PANEL: Symbol.for('PANEL')
 };
+
+export const initialStateForUserActivity = {
+  id: 1,
+  activityPeriod: 'weekly',
+  settings: { slice: 5, sort: 'DESC', time: 'mobile_time', date: 'weekly' }
+};

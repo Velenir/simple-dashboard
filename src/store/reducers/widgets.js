@@ -1,3 +1,4 @@
+import { initialStateForUserActivity } from '../constants';
 import {
   SAVE_MODAL_ADD_WIDGET,
   REMOVE_WIDGET_IMMEDIATELY,
@@ -27,20 +28,17 @@ const widgetReducer = (state = {}, action = {}, globalState) => {
   }
 };
 
-const initialSteForUserActivity = {
-  id: 1,
-  activityPeriod: 'weekly',
-  settings: { slice: 5, sort: 'DESC', time: 'mobile_time', date: 'weekly' }
+const initialState = {
+  [initialStateForUserActivity.id]: initialStateForUserActivity
 };
 
-export default (state = { 1: initialSteForUserActivity }, action = {}, globalState = {}) => {
+export default (state = initialState, action = {}, globalState = {}) => {
   switch (action.type) {
     case SAVE_MODAL_ADD_WIDGET:
     {
       const newState = {};
       for (const wid of globalState.adding.added) {
-        // TODO async load data in widget
-        if (wid != null) newState[wid] = state[wid] || {};
+        if (wid != null) newState[wid] = state[wid] || initialState[wid] || {};
       }
       return newState;
     }
@@ -58,7 +56,7 @@ export default (state = { 1: initialSteForUserActivity }, action = {}, globalSta
       // return Object.keys(state)
       //   .reduce((acc, w) => w.id === action.payload.id ? acc : (acc[w.id] = w, acc), {});
       return Object.keys(state)
-        .reduce((acc, id) => id === action.payload.id ? acc : (acc[id] = state[id], acc), {});
+        .reduce((acc, id) => +id === action.payload.id ? acc : (acc[id] = state[id], acc), {});
     default:
       return state;
   }

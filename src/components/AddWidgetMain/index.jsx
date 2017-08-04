@@ -10,7 +10,7 @@ const AddWidgetMain = ({ active, widgets, removeWidget, addWidget, filter }) => 
   <div className='add-widget__main'>
     {(filter ? widgets.filter(
       id => id == null ? null : childWidgets[id].title.toLowerCase().includes(filter))
-      : widgets).map(id => {
+      : widgets).sort().map(id => {
       if (id == null) return null;
 
       const widget = childWidgets[id];
