@@ -1,6 +1,10 @@
 import React, { PureComponent } from 'react';
 
-const Error = ({ children }) => <p>Error: {children}</p>;
+const Error = ({ children }) => (
+  <p style={{ padding: '2em', textAlign: 'center' }}>
+    Error: {children}
+  </p>
+);
 
 class Loader extends PureComponent {
   componentDidMount() {

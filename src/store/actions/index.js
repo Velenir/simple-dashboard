@@ -94,3 +94,8 @@ export const getUserActivity = (id, path) => async (dispatch) => {
   //   error => dispatch(fetchFailure(error, id))
   // );
 };
+
+export const moveWidget = (id, position) => ({
+  type: TYPES.MOVE_WIDGET,
+  payload: { id, position }
+});

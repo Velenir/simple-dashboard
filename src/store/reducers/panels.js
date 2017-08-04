@@ -16,16 +16,17 @@ export default (state = initialState, action = {}, globalState = {}) => {
       return state.filter(wid => wid !== action.payload.id);
     case MOVE_WIDGET:
     {
-      const { id, position } = action.payload;
+      const { id: movingId, position: widgetIndTo } = action.payload;
 
-      const newState = state.slice();
-      const widgetInd = newState.indexOf(id);
-      if (widgetInd === -1) return state;
+      const widgetIndFrom = state.indexOf(movingId);
 
-      newState.splice(widgetInd, 1);
-      newState.splice(position, 0, id);
+      if (widgetIndFrom === -1 || widgetIndTo < 0 || widgetIndTo >= NUM_OF_PANELS) return state;
 
-      return newState;
+      const widgetIdToReplace = state[widgetIndTo];
+
+      return state.map((id, i) => i === widgetIndFrom ?
+        widgetIdToReplace : i === widgetIndTo ? movingId : id
+      );
     }
     default:
       return state;

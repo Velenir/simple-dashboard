@@ -40,3 +40,7 @@ export const avatars = [
   userAvatar4,
   userAvatar5
 ];
+
+export const DnDtypes = {
+  PANEL: Symbol.for('PANEL')
+};

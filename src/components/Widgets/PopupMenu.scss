@@ -18,7 +18,7 @@
     width: 280px;
     cursor: pointer;
 
-    &--disabled {
+    &--disabled, .popup-menu &--disabled:hover {
       background-color: #ead2d2;
       color: #fff;
     }

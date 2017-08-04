@@ -14,3 +14,5 @@ export const CHANGE_EDIT_WIDGET_SETTING = Symbol.for('CHANGE_EDIT_WIDGET_SETTING
 export const FETCH_START = Symbol.for('FETCH_START');
 export const FETCH_SUCCESS = Symbol.for('FETCH_SUCCESS');
 export const FETCH_FAILURE = Symbol.for('FETCH_FAILURE');
+
+export const MOVE_WIDGET = Symbol.for('MOVE_WIDGET');
