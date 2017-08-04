@@ -3,3 +3,4 @@ build
 *.log
 *stats.json
 .eslintcache
+records.json
