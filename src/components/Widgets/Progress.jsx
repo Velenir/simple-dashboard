@@ -3,7 +3,6 @@ import './Progress.scss';
 
 const Progress = ({ value, className }) => (
   <div className={`progress ${className}`}>
-    {/* <progress className='progress__bar' max='100' value={value}>{value} %</progress> */}
     <span className='progress__bar--total' data-value={value}>
       <span className='progress__bar--filled' style={{ width: `${value}%` }} />
     </span>

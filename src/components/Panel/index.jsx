@@ -33,7 +33,6 @@ const mapStateToProps = (state, { id }) => ({
   Component: id == null ? null : widgetComponents[id]
 });
 
-// export default connect(mapStateToProps, { moveWidget })(Panel);
 
 const panelTarget = {
   canDrop(props, monitor) {

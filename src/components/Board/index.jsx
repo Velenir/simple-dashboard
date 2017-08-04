@@ -18,7 +18,6 @@ const mapStateToProps = ({ panels }) => ({
   panels
 });
 
-// export default connect(mapStateToProps, null)(Board);
 
 export default compose(
   connect(mapStateToProps, null),

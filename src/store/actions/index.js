@@ -1,10 +1,6 @@
 import * as TYPES from './types';
 import { fetchUserData } from '../../api';
 
-export const actionCreator = () => ({
-  type: TYPES.SOME_ACTION
-});
-
 export const openModalAddWidget = () => ({
   type: TYPES.OPEN_MODAL_ADD_WIDGET
 });
@@ -88,11 +84,6 @@ export const getUserActivity = (id, path) => async (dispatch) => {
     dispatch(fetchFailure(id, path, error));
     return Promise.reject({ error, id });
   }
-
-  // return fetchUserData.then(
-  //   data => dispatch(fetchSuccess(data, id)),
-  //   error => dispatch(fetchFailure(error, id))
-  // );
 };
 
 export const moveWidget = (id, position) => ({

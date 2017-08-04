@@ -52,7 +52,7 @@ Modal.defaultProps = {
   mode: 'add'
 };
 
-const mapStateToProps = ({ modal }, { mode }) => (console.log(modal), {
+const mapStateToProps = ({ modal }, { mode }) => ({
   ...modal,
   ...childComponents[modal.mode || mode]
 });

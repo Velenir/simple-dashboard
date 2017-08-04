@@ -1,3 +1,4 @@
+import { NUM_OF_PANELS } from '../constants';
 import {
   OPEN_MODAL_ADD_WIDGET,
   ADD_WIDGET,
@@ -7,7 +8,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  added: [null, null, null, null, null, null],
+  added: Array.from({ length: NUM_OF_PANELS }, () => null),
   available: [1, 2, 3],
   active: 'available'
 };
