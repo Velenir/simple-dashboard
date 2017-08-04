@@ -16,9 +16,6 @@ const NODE_ENV = process.env.BABEL_ENV = process.env.NODE_ENV;
 
 const commonConfig = merge([
   {
-    entry: {
-      app: PATHS.src
-    },
     output: {
       path: PATHS.build,
       filename: '[name].js'
@@ -32,8 +29,7 @@ const commonConfig = merge([
         inject: false,
         template: require('html-webpack-template'),
         appMountId: 'app'
-      }),
-      new webpack.optimize.ModuleConcatenationPlugin()
+      })
     ]
   },
   parts.lintJavaScript({
@@ -57,6 +53,9 @@ const commonConfig = merge([
 
 const productionConfig = merge([
   {
+    entry: {
+      app: ['babel-polyfill', PATHS.src]
+    },
     performance: {
       hints: 'warning', // 'error' or false are valid too
       maxEntrypointSize: 400000, // in bytes
@@ -69,6 +68,7 @@ const productionConfig = merge([
       publicPath: '/simple-dashboard/'
     },
     plugins: [
+      new webpack.optimize.ModuleConcatenationPlugin(),
       new webpack.NamedModulesPlugin(),
       new webpack.NamedChunksPlugin((chunk) => {
         if (chunk.name) {
@@ -119,7 +119,7 @@ const productionConfig = merge([
 const developmentConfig = merge([
   {
     entry: {
-      app: ['react-hot-loader/patch', PATHS.src]
+      app: ['react-hot-loader/patch', 'babel-polyfill', PATHS.src]
     }
   },
   parts.devServer({
@@ -134,7 +134,7 @@ const developmentConfig = merge([
       devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
     }
   },
-  parts.generateSourceMaps({ type: 'cheap-module-eval-source-map' })
+  parts.generateSourceMaps({ type: 'module-source-map' })
 ]);
 
 module.exports = (env) => {
