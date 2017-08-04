@@ -6,9 +6,9 @@ const middlewares = [thunk];
 let enhancer;
 
 if (process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line no-underscore-dangle
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ serialize: true })
-    || compose;
+  /* eslint-disable no-underscore-dangle */
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ serialize: true }) : compose;
 
   enhancer = composeEnhancers(
     applyMiddleware(...middlewares)
