@@ -8,7 +8,7 @@
   "scripts": {
     "start": "nodemon --watch webpack.config.js --exec 'npm run start:dev'",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "start:prod": "npm run build && http-server ./build",
+    "start:prod": "npm run build:local && http-server ./build",
     "build": "cross-env NODE_ENV=production webpack",
     "build:local": "npm run build -- --env.runLocally",
     "lint": "npm run lint:js && npm run lint:css",
