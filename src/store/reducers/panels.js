@@ -13,7 +13,7 @@ export default (state = initialState, action = {}, globalState = {}) => {
     case SAVE_MODAL_ADD_WIDGET:
       return globalState.adding.added.slice();
     case REMOVE_WIDGET_IMMEDIATELY:
-      return state.filter(wid => wid !== action.payload.id);
+      return state.map(wid => wid === action.payload.id ? null : wid);
     case MOVE_WIDGET:
     {
       const { id: movingId, position: widgetIndTo } = action.payload;
